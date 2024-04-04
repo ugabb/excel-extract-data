@@ -16,24 +16,26 @@ async function filtrarColunas(arquivoExcel) {
     const dadosFiltrados = XLSX.utils.sheet_to_json(worksheet, {
       header,
       raw: false,
+      range: "A:K"
     });
+    console.log(dadosFiltrados)
 
-    // Criar um novo Workbook
-    const novoWorkbook = XLSX.utils.book_new();
+    // // Criar um novo Workbook
+    // const novoWorkbook = XLSX.utils.book_new();
 
-    // Adicionar uma nova planilha ao novo Workbook
-    const novaWorksheet = XLSX.utils.json_to_sheet(dadosFiltrados);
+    // // Adicionar uma nova planilha ao novo Workbook
+    // const novaWorksheet = XLSX.utils.json_to_sheet(dadosFiltrados);
 
-    // Definir os cabeçalhos da nova planilha
-    XLSX.utils.sheet_add_aoa(novaWorksheet, [header], { origin: -1 });
+    // // Definir os cabeçalhos da nova planilha
+    // XLSX.utils.sheet_add_aoa(novaWorksheet, [header], { origin: -1 });
 
-    // Adicionar a nova planilha ao novo Workbook
-    XLSX.utils.book_append_sheet(novoWorkbook, novaWorksheet, "Planilha1");
+    // // Adicionar a nova planilha ao novo Workbook
+    // XLSX.utils.book_append_sheet(novoWorkbook, novaWorksheet, "Planilha1");
 
-    // Escrever o novo Workbook para um arquivo Excel
-    XLSX.writeFile(novoWorkbook, "./convertido/dados_filtrados.xlsx");
+    // // Escrever o novo Workbook para um arquivo Excel
+    // XLSX.writeFile(novoWorkbook, "./convertido/dados_filtrados.xlsx");
 
-    console.log("Novo arquivo Excel criado com os dados filtrados.");
+    // console.log("Novo arquivo Excel criado com os dados filtrados.");
   } catch (error) {
     console.error("Erro:", error);
   }
